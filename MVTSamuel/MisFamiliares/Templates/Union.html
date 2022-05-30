@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Familia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/Familia">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Union">Conoce mas sobre nosotros</a>
+        </li>
+    
+      </ul>
+    <br/>
+    <div class = "container"><h1>Lista de Familia</h1></div>
+    
+    {% for m in n1 %}
+       {{ m.NombreCompleto}}<br></br>
+    {% endfor %}
+    <div class = "container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">NombreCompleto</th>
+            <th scope="col">Edad</th>
+            <th scope="col">mismaSangre</th>
+            <th scope="col">relacion</th>
+            <th scope="col">info</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in Familia_lista1 %}
+          <tr>
+            <th scope="row">{{i.NombreCompleto}}</th>
+            <td>{{i.Edad}}</td>
+            <td>{{i.mismaSangre}}</td>
+            <td>{{i.relacion}}</td>   
+            {% if i.relacion == 'Padre'%}         
+                <td><a href="/papa"><button type="button" class="btn btn-info">Saber mas de {{i.NombreCompleto}}</button></a></td>
+            {% elif i.relacion == 'Madre'%}         
+                <td><a href="/mama"><button type="button" class="btn btn-info">Saber mas de {{i.NombreCompleto}}</button></a></td>
+            {% else %}         
+                <td><a href="/bebe"><button type="button" class="btn btn-info">Saber mas de {{i.NombreCompleto}}</button></a></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>
